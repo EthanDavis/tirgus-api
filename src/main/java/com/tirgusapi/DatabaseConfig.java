@@ -1,5 +1,6 @@
 package com.tirgusapi;
 
+import com.amazonaws.auth.profile.ProfileCredentialsProvider;
 import com.amazonaws.client.builder.AwsClientBuilder;
 import com.amazonaws.services.secretsmanager.AWSSecretsManager;
 import com.amazonaws.services.secretsmanager.AWSSecretsManagerClientBuilder;
@@ -48,7 +49,8 @@ public class DatabaseConfig {
       AwsClientBuilder.EndpointConfiguration config = new AwsClientBuilder.EndpointConfiguration(endpoints, AWS_Region);
       AWSSecretsManagerClientBuilder clientBuilder = AWSSecretsManagerClientBuilder.standard();
       clientBuilder.setEndpointConfiguration(config);
-      AWSSecretsManager client = clientBuilder.build();
+      AWSSecretsManager client =
+          clientBuilder.build();
 
       ObjectMapper objectMapper = new ObjectMapper();
       JsonNode secretsJson = null;

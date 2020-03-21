@@ -1,7 +1,7 @@
 package com.tirgusapi.inventory;
 
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface InventoryRepository extends CrudRepository {
+public interface InventoryRepository extends JpaRepository<InventoryItem, Long> {
 }
