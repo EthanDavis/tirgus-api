@@ -37,7 +37,7 @@ public class DatabaseConfig {
           .create()
           .username(secrets.get("user").textValue())
           .password(secrets.get("password").textValue())
-          .url(secrets.get("host").textValue())
+          .url(secrets.get("host").textValue() + ":" + secrets.get("port").textValue() + "/trigus_api_db")
           .driverClassName("org.postgresql.Driver")
           .build();
    }

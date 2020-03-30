@@ -2,10 +2,10 @@ package com.tirgusapi.inventory;
 
 import org.joda.time.DateTime;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "Inventory")
 public class InventoryItem {
 
    @Id
@@ -14,8 +14,13 @@ public class InventoryItem {
    private String name;
    private double price;
    private int quantity;
+   @Lob
+   private byte[] image;
    private String description;
    private DateTime createdAt;
+
+   public InventoryItem() {
+   }
 
    public InventoryItem(String name, double price) {
       this.name = name;
@@ -36,6 +41,14 @@ public class InventoryItem {
 
    public void setQuantity(int quantity) {
       this.quantity = quantity;
+   }
+
+   public byte[] getImage() {
+      return image;
+   }
+
+   public void setImage(byte[] image) {
+      this.image = image;
    }
 
    public String getName() {
