@@ -21,6 +21,7 @@ public class InventoryItem {
       this.id = itemEntity.getId();
       this.name = itemEntity.getName();
       this.price = itemEntity.getPrice();
+      this.image = new String(itemEntity.getImage());
       this.quantity = itemEntity.getQuantity();
       this.description = itemEntity.getDescription();
       this.createdAt = itemEntity.getCreatedAt();
