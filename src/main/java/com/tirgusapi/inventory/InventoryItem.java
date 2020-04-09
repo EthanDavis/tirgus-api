@@ -2,29 +2,28 @@ package com.tirgusapi.inventory;
 
 import org.joda.time.DateTime;
 
-import javax.persistence.*;
 
-@Entity
-@Table(name = "Inventory")
 public class InventoryItem {
 
-   @Id
-   @GeneratedValue(strategy = GenerationType.AUTO)
    private Long id;
    private String name;
    private double price;
    private int quantity;
-   @Lob
-   private byte[] image;
+   private String image;
    private String description;
    private DateTime createdAt;
+
 
    public InventoryItem() {
    }
 
-   public InventoryItem(String name, double price) {
-      this.name = name;
-      this.price = price;
+   public InventoryItem(InventoryItemEntity itemEntity) {
+      this.id = itemEntity.getId();
+      this.name = itemEntity.getName();
+      this.price = itemEntity.getPrice();
+      this.quantity = itemEntity.getQuantity();
+      this.description = itemEntity.getDescription();
+      this.createdAt = itemEntity.getCreatedAt();
    }
 
    public Long getId() {
@@ -35,6 +34,22 @@ public class InventoryItem {
       this.id = id;
    }
 
+   public String getName() {
+      return name;
+   }
+
+   public void setName(String name) {
+      this.name = name;
+   }
+
+   public double getPrice() {
+      return price;
+   }
+
+   public void setPrice(double price) {
+      this.price = price;
+   }
+
    public int getQuantity() {
       return quantity;
    }
@@ -43,27 +58,27 @@ public class InventoryItem {
       this.quantity = quantity;
    }
 
-   public byte[] getImage() {
+   public String getImage() {
       return image;
    }
 
-   public void setImage(byte[] image) {
+   public void setImage(String image) {
       this.image = image;
    }
 
-   public String getName() {
-      return this.name;
+   public String getDescription() {
+      return description;
    }
 
-   public double getPrice() {
-      return this.price;
+   public void setDescription(String description) {
+      this.description = description;
    }
 
    public DateTime getCreatedAt() {
-      return this.createdAt;
+      return createdAt;
    }
 
-   public String getDescription() {
-      return this.description;
+   public void setCreatedAt(DateTime createdAt) {
+      this.createdAt = createdAt;
    }
 }

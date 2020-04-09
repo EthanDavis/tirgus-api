@@ -6,26 +6,23 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class InventoryManager {
+
    @Autowired
-   InventoryRepository inventoryRepo;
+   InventoryDao inventoryDao;
 
    public InventoryItem createInventoryItem(InventoryItem item) {
-      return inventoryRepo.save(item);
+      return inventoryDao.createInventoryItem(item);
    }
 
    public List<InventoryItem> getInventory() {
-      return inventoryRepo.findAll();
+    return inventoryDao.getInventory();
    }
 
    public InventoryItem getInventoryItemById(Long id) throws NotFoundException {
-      Optional<InventoryItem> item = inventoryRepo.findById(id);
-      if (!item.isPresent()) {
-         throw new NotFoundException("Item with id: " + id + "could not be found");
-      } else {
-         return item.get();
-      }
+      return inventoryDao.getInventoryItemById(id);
    }
 }
