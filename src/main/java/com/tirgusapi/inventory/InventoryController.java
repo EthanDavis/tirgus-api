@@ -22,7 +22,6 @@ public class InventoryController {
    @PostMapping("/inventory/items")
    @ResponseBody
    public InventoryItem createInventoryItem(@RequestBody InventoryItem item) {
-      System.out.println("The item is" + item);
       return inventoryManager.createInventoryItem(item);
    }
 
