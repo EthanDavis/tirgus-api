@@ -55,7 +55,7 @@ public class InventoryManagerTest {
    public void should_call_getInventoryItemById_and_throw_not_found_exception() throws NotFoundException {
       Long testId = 1l;
       Mockito.when(inventoryDao.getInventoryItemById(testId)).thenThrow(new NotFoundException("Not Found"));
-      Assertions.assertThrows(ResourceNotFoundException.class, () -> {
+      Assertions.assertThrows(NotFoundException.class, () -> {
          target.getInventoryItemById(testId);
       });
 
