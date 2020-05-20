@@ -27,12 +27,12 @@ public class InventoryController {
 
    @GetMapping("/inventory/items/{id}")
    @ResponseBody
-   public InventoryItem getInventoryItemById(@PathVariable("id") Long id) {
+   public InventoryItem getInventoryItemById(@PathVariable("id") Long id) throws NotFoundException {
       try {
          return inventoryManager.getInventoryItemById(id);
       } catch (NotFoundException e) {
          e.printStackTrace();
-         throw new ResourceNotFoundException("Could not find item with id " + id);
+         throw new NotFoundException("Could not find item with id " + id);
       }
    }
 }

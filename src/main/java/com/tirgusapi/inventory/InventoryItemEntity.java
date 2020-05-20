@@ -11,12 +11,19 @@ public class InventoryItemEntity {
    @Id
    @GeneratedValue(strategy = GenerationType.AUTO)
    private Long id;
+   @Column(name = "name", nullable = false)
    private String name;
+   @Column(name = "price", nullable = false)
    private double price;
+   @Column(name = "quantity", nullable = false)
    private int quantity;
    @Lob
+   @Column(name = "image", nullable = false)
    private byte[] image;
+   @Column(name = "description", nullable = true)
    private String description;
+
+   @Column(name = "createdAt", nullable = false)
    private DateTime createdAt;
 
    public InventoryItemEntity() {

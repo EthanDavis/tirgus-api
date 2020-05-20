@@ -1,5 +1,6 @@
 package com.tirgusapi.inventory;
 
+import com.amazonaws.services.secretsmanager.model.ResourceNotFoundException;
 import javassist.NotFoundException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -54,7 +55,7 @@ public class InventoryManagerTest {
    public void should_call_getInventoryItemById_and_throw_not_found_exception() throws NotFoundException {
       Long testId = 1l;
       Mockito.when(inventoryDao.getInventoryItemById(testId)).thenThrow(new NotFoundException("Not Found"));
-      Assertions.assertThrows(NotFoundException.class, () -> {
+      Assertions.assertThrows(ResourceNotFoundException.class, () -> {
          target.getInventoryItemById(testId);
       });
 
