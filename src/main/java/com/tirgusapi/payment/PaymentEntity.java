@@ -2,13 +2,32 @@ package com.tirgusapi.payment;
 
 import org.joda.time.DateTime;
 
-public class Payment {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Payments")
+public class PaymentEntity {
+
+   @Id()
    String id;
-   String description;
-   String token;
+   @Column(name = "amount", nullable = false)
    long amount;
+   @Column(name = "description", nullable = false)
+   String description;
+   @Column(name = "email", nullable = false)
    String email;
+   @Column(name = "createdAt", nullable = false)
    DateTime createdAt;
+
+   public PaymentEntity(Payment payment) {
+      this.setId(payment.getId());
+      this.setDescription(payment.getDescription());
+      this.setAmount(payment.getAmount());
+      this.setEmail(payment.getEmail());
+   }
 
    public String getId() {
       return id;
@@ -24,14 +43,6 @@ public class Payment {
 
    public void setDescription(String description) {
       this.description = description;
-   }
-
-   public String getToken() {
-      return token;
-   }
-
-   public void setToken(String token) {
-      this.token = token;
    }
 
    public long getAmount() {

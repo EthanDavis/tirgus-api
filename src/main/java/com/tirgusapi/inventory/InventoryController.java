@@ -1,6 +1,5 @@
 package com.tirgusapi.inventory;
 
-import com.amazonaws.services.secretsmanager.model.ResourceNotFoundException;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

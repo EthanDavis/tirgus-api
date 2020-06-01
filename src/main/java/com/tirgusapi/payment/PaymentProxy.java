@@ -5,7 +5,9 @@ import com.stripe.exception.StripeException;
 import com.stripe.model.PaymentIntent;
 import com.stripe.param.PaymentIntentCreateParams;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
+@Service
 public class PaymentProxy {
 
    @Value("${stripe.keys.secret}")
@@ -20,7 +22,9 @@ public class PaymentProxy {
       PaymentIntentCreateParams params =
           PaymentIntentCreateParams.builder()
               .setAmount(payment.getAmount())
+              .setSource(payment.getToken())
               .setCurrency("usd")
+              .setDescription(payment.getDescription())
               .addPaymentMethodType("card")
               .setReceiptEmail(payment.getEmail())
               .build();
